@@ -44,14 +44,19 @@ import com.baidu.hsb.route.visitor.PartitionKeyVisitor;
 public class HServerRouter {
 
     private static int getReadIdx(boolean isRead, String dataNode) {
+
         if (!isRead) {
             return -1;
         }
         MySQLDataNode dn = HeisenbergContext.getMysqlDataNode().get(dataNode);
-        if (StringUtil.isEmpty(dataNode)) {
+        if (StringUtil.isEmpty(dataNode) || dn == null) {
             throw new IllegalArgumentException(
                 "schema don't have dataNode attribute or dataNode is null");
         }
+        if (dn.getConfig().isNeedWR()) {
+            return -1;
+        }
+
         return WeightHelper.getReadIndex(dn);
 
     }
