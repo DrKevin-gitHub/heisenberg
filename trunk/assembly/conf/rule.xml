@@ -4,15 +4,24 @@
 	<tableRule name="rule1">
 		<columns>F_USER_ID</columns>
 	<dbRuleList>
-			<dbRule><![CDATA[#set($start=$F_USER_ID.length() - 3)##
-			#set($end=$F_USER_ID.length() - 1)##
-			$stringUtil.substring($F_USER_ID,$start,$end)]]>
+		<dbRule><![CDATA[
+			#set($Integer=0)##
+			#set($start=$Integer.toString($F_USER_ID).length() - 3)##
+			#set($end=$Integer.toString($F_USER_ID).length() - 1)##
+			$stringUtil.substring($Integer.toString($F_USER_ID),$start,$end)]]>
 			</dbRule>
 		</dbRuleList>
-		<tbRuleList>
-			<tbRule><![CDATA[#set($start=$F_USER_ID.length() - 1)##
-			 $stringUtil.substring($F_USER_ID,$start)]]></tbRule>
-		</tbRuleList>
+	<tbRuleList>
+		<tbRule><![CDATA[
+			#set($Integer=0)##
+			#set($start=$Integer.toString($F_USER_ID).length() - 1)##
+			#set($start1=$Integer.toString($F_USER_ID).length() - 3)##
+			#set($end=$Integer.toString($F_USER_ID).length() - 1)##
+			#set($prefix="_"+$stringUtil.substring($Integer.toString($F_USER_ID),$start1,$end)+"_"+$stringUtil.substring($Integer.toString($F_USER_ID),$start))##
+			$!prefix]]>
+
+		</tbRule>
+	</tbRuleList>
 		<!-- 00-99 100个表,每个表属于哪个结点 Map<Integer,Set<String>> -->
 		<tbPrefix>
 				<![CDATA[ 	

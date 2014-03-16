@@ -19,8 +19,8 @@
   -->
 
   <!-- 用户访问定义，用户名、密码、schema等信息。 -->
-  <user name="brucexx">
-    <property name="password">st0078</property>
+  <user name="pay">
+    <property name="password">MiraCle</property>
     <property name="schemas">wms_shard</property>
   </user>
   <!--
