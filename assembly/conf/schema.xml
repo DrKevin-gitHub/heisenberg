@@ -43,7 +43,7 @@
 		</property>
 		<property name="user">pay</property>
 		<property name="password">MiraCle</property>
-		<property name="sqlMode">STRICT_TRANS_TABLES</property>
+		<!--  property name="sqlMode">STRICT_TRANS_TABLES</property-->
 	</dataSource>
 
 
