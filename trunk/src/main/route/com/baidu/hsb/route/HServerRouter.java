@@ -53,7 +53,7 @@ public class HServerRouter {
             throw new IllegalArgumentException(
                 "schema don't have dataNode attribute or dataNode is null");
         }
-        if (dn.getConfig().isNeedWR()) {
+        if (!dn.getConfig().isNeedWR()) {
             return -1;
         }
 
